@@ -2,4 +2,14 @@
   .btn-row {
     margin: 20px;
   }
+
+  .field-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .form-item {
+      margin: 10px;
+    }
+  }
 }
