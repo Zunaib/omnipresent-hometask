@@ -72,7 +72,7 @@ const AddEmployeeForm = () => {
               <Input placeholder="Enter first name" {...props.field} />
             )}
             rules={{
-              required: "Required",
+              required: "First name is required",
             }}
           />
         </FormItemWrapper>
@@ -92,7 +92,7 @@ const AddEmployeeForm = () => {
               <Input placeholder="Enter last name" {...props.field} />
             )}
             rules={{
-              required: "Required",
+              required: "Last name is required",
             }}
           />
         </FormItemWrapper>
@@ -129,7 +129,7 @@ const AddEmployeeForm = () => {
               </Select>
             )}
             rules={{
-              required: "Required",
+              required: "Country is required",
             }}
           />
         </FormItemWrapper>
@@ -155,7 +155,7 @@ const AddEmployeeForm = () => {
               />
             )}
             rules={{
-              required: "Required",
+              required: "DOB is required",
             }}
           />
         </FormItemWrapper>
@@ -174,7 +174,18 @@ const AddEmployeeForm = () => {
               <Input placeholder="Enter no. of days" {...props.field} />
             )}
             rules={{
-              required: "Required",
+              required: "Holidays are required",
+              validate: {
+                checkValidAllowance: (value: string) => {
+                  const days = parseInt(value);
+                  if (country === "spain" && days < 30) {
+                    return "Minimum 30 days";
+                  } else if (country === "brazil" && days > 40) {
+                    return "Maximum 40 days";
+                  }
+                  return true;
+                },
+              },
             }}
           />
         </FormItemWrapper>

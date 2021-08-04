@@ -22,7 +22,7 @@ const WorkingHoursInput = ({ control, errors }: WorkingHoursInputProps) => {
           <Input placeholder="Enter working hours" {...props.field} />
         )}
         rules={{
-          required: "Required",
+          required: "Working hours are required",
         }}
       />
     </FormItemWrapper>

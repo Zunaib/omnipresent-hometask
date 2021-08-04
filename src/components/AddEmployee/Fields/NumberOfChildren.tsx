@@ -22,7 +22,7 @@ const NumberOfChildren = ({ control, errors }: NumberOfChildrenProps) => {
           <Input placeholder="Enter no. of children" {...props.field} />
         )}
         rules={{
-          required: "Required",
+          required: "No. of children are required",
         }}
       />
     </FormItemWrapper>

@@ -25,7 +25,7 @@ const SocialInsuranceNumberInput = ({
           <Input placeholder="Enter social insurance number" {...props.field} />
         )}
         rules={{
-          required: "Required",
+          required: "SIN is required",
         }}
       />
     </FormItemWrapper>

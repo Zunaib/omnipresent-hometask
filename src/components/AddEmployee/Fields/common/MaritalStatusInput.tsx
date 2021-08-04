@@ -30,7 +30,7 @@ const MaritalStatusInput = ({ control, errors }: MaritalStatusInputProps) => {
           </Select>
         )}
         rules={{
-          required: "Required",
+          required: "Marital Status is required",
         }}
       />
     </FormItemWrapper>
