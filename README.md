@@ -39,8 +39,8 @@
 ## How To Execute
 
 - Navigate to root directory.
-- Install npm dependencies by **npm install**.
-- Run project by **npm run start**.
+- Install npm dependencies by running **npm install** in the terminal.
+- Run project by running **npm run start** in the terminal.
 
 ## Screenshot
 
