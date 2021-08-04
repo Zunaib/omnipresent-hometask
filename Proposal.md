@@ -60,6 +60,8 @@ To implement the Rest API, do the following steps,
 
 - In the Server File, Import the newly declared route and attach it to the **`express app`** so that the API can be exposed to the world.
 
+---
+
 - Before moving forward, declare a utility function in Utils named - **`fetchCountryData`**,
 
   - This util function should be a function that receives a parameter - **_`country`_** - whose type is string.
@@ -68,6 +70,8 @@ To implement the Rest API, do the following steps,
     - Pass the above URL as a first argument, callback function as a second argument.
     - Check for exception / error first, if error then return immediately with the error response.
     - if the request was successfully executed then return the country details fetched as a json with country name.
+
+---
 
 - Now moving to the Rest API's body,
 
@@ -81,8 +85,8 @@ To implement the Rest API, do the following steps,
   - For every employee object, extract country name from it by destructuring.
   - Call - _`fetchCountryData`_ - for every iteration, passing the country name as a parameter fetched above.
   - If the function - _`fetchCountryData`_ - return a valid json with country details, append that to the current employee object as an attribute called - **countryInformation**.
-    - Additionally check if the region returned existed in the regions declared in config files, append an additional attribute to employee object formatted as **`{firstName}{lastName}{dateOfBirth}`**
+    - Additionally check if the region returned existed in the regions declared in config files, append an additional attribute to employee object formatted as **`{firstName}{lastName}{dateOfBirth}`**, obviously converting date to a string.
   - Keep track of the requests using a - **`counter`**,
     - Increment the counter every time a new iteration is run and - _`fetchCountryData`_ - is called.
     - Keep a check that if - **_counter is equal to the length of employees list_**, that means every employee of the employees list has been traversed.
-  - Finally when the counter is equal to the length of employees list, return a response with new update list of employees with a success status code.
+  - Finally when the counter is equal to the length of employees list, return a response with new updated list of employees with a success status code.
