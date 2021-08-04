@@ -7,12 +7,16 @@
 - Validate form fields.
 - Update holiday allowance based on country.
 
+---
+
 ## Stack Used
 
 - ReactJS **(Base)**.
 - SCSS **(Additional Styling)**.
 - Antd **(UI LIbrary)**.
 - React Hook Form **(State / Validation Management)**.
+
+---
 
 ## Steps Followed
 
@@ -32,17 +36,23 @@
 - Tested Forms using every possible value.
 - Wrote Read Me.
 
+---
+
 ## Disclaimer
 
 > Pushed Commits To Repository Regularly.
 
 > Backend Proposal Added to Root
 
+---
+
 ## How To Execute
 
 - Navigate to root directory.
 - Install npm dependencies by running **npm install** in the terminal.
 - Run project by running **npm run start** in the terminal.
+
+---
 
 ## Screenshot
 
