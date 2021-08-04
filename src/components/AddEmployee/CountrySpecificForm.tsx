@@ -1,4 +1,3 @@
-import FormItemWrapper from "../common/FormItemWrapper";
 import MaritalStatusInput from "./Fields/common/MaritalStatusInput";
 import NumberOfChildren from "./Fields/NumberOfChildren";
 import SocialInsuranceNumberInput from "./Fields/SocialInsuranceNumberInput";
@@ -19,26 +18,16 @@ const CountrySpecificForm = ({
     <>
       {country === "spain" ? (
         <>
-          <FormItemWrapper>
-            <MaritalStatusInput control={control} errors={errors} />
-          </FormItemWrapper>
-          <FormItemWrapper>
-            <SocialInsuranceNumberInput control={control} errors={errors} />
-          </FormItemWrapper>
+          <MaritalStatusInput control={control} errors={errors} />
+          <SocialInsuranceNumberInput control={control} errors={errors} />
         </>
       ) : country === "brazil" ? (
-        <FormItemWrapper>
-          <WorkingHours control={control} errors={errors} />
-        </FormItemWrapper>
+        <WorkingHours control={control} errors={errors} />
       ) : (
         country === "ghana" && (
           <>
-            <FormItemWrapper>
-              <MaritalStatusInput control={control} errors={errors} />
-            </FormItemWrapper>
-            <FormItemWrapper>
-              <NumberOfChildren control={control} errors={errors} />
-            </FormItemWrapper>
+            <MaritalStatusInput control={control} errors={errors} />
+            <NumberOfChildren control={control} errors={errors} />
           </>
         )
       )}

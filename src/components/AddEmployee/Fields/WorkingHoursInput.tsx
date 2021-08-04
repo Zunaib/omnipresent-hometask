@@ -1,5 +1,6 @@
-import { Form, Input } from "antd";
+import { Input } from "antd";
 import { Controller } from "react-hook-form";
+import FormItemWrapper from "../../common/FormItemWrapper";
 
 export interface WorkingHoursInputProps {
   control: any;
@@ -8,22 +9,23 @@ export interface WorkingHoursInputProps {
 
 const WorkingHoursInput = ({ control, errors }: WorkingHoursInputProps) => {
   return (
-    <Form.Item
-      className="form-item"
+    <FormItemWrapper
+      labelCol={10}
+      wrapperCol={14}
       label="Working Hours"
-      validateStatus={errors.workingHours ? "error" : "success"}
-      help={errors.workingHours ? errors.workingHours.message : ""}
+      error={errors.workingHours}
     >
       <Controller
         name="workingHours"
         control={control}
-        defaultValue=""
-        render={(props) => <Input {...props.field} />}
+        render={(props) => (
+          <Input placeholder="Enter working hours" {...props.field} />
+        )}
         rules={{
           required: "Required",
         }}
       />
-    </Form.Item>
+    </FormItemWrapper>
   );
 };
 

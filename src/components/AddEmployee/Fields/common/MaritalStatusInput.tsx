@@ -1,5 +1,6 @@
-import { Form, Select } from "antd";
+import { Select } from "antd";
 import { Controller } from "react-hook-form";
+import FormItemWrapper from "../../../common/FormItemWrapper";
 
 export interface MaritalStatusInputProps {
   control: any;
@@ -8,11 +9,11 @@ export interface MaritalStatusInputProps {
 
 const MaritalStatusInput = ({ control, errors }: MaritalStatusInputProps) => {
   return (
-    <Form.Item
-      className="form-item"
+    <FormItemWrapper
+      labelCol={10}
+      wrapperCol={14}
       label="Marital Status"
-      validateStatus={errors.maritalStatus ? "error" : "success"}
-      help={errors.maritalStatus ? errors.maritalStatus.message : ""}
+      error={errors.maritalStatus}
     >
       <Controller
         name="maritalStatus"
@@ -22,7 +23,7 @@ const MaritalStatusInput = ({ control, errors }: MaritalStatusInputProps) => {
           <Select
             {...props.field}
             style={{ width: "200px" }}
-            placeholder="Select a country"
+            placeholder="Select a marital status"
           >
             <Select.Option value="married">Married</Select.Option>
             <Select.Option value="single">Single</Select.Option>
@@ -32,7 +33,7 @@ const MaritalStatusInput = ({ control, errors }: MaritalStatusInputProps) => {
           required: "Required",
         }}
       />
-    </Form.Item>
+    </FormItemWrapper>
   );
 };
 

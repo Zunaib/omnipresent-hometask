@@ -1,5 +1,6 @@
-import { Form, Input } from "antd";
+import { Input } from "antd";
 import { Controller } from "react-hook-form";
+import FormItemWrapper from "../../common/FormItemWrapper";
 
 export interface SocialInsuranceNumberInputProps {
   control: any;
@@ -11,24 +12,23 @@ const SocialInsuranceNumberInput = ({
   errors,
 }: SocialInsuranceNumberInputProps) => {
   return (
-    <Form.Item
-      className="form-item"
+    <FormItemWrapper
+      labelCol={14}
+      wrapperCol={10}
       label="Social Insurance Number"
-      validateStatus={errors.socialInsuranceNumber ? "error" : "success"}
-      help={
-        errors.socialInsuranceNumber ? errors.socialInsuranceNumber.message : ""
-      }
+      error={errors.socialInsuranceNumber}
     >
       <Controller
         name="socialInsuranceNumber"
         control={control}
-        defaultValue=""
-        render={(props) => <Input {...props.field} />}
+        render={(props) => (
+          <Input placeholder="Enter social insurance number" {...props.field} />
+        )}
         rules={{
           required: "Required",
         }}
       />
-    </Form.Item>
+    </FormItemWrapper>
   );
 };
 

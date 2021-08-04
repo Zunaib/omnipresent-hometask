@@ -13,6 +13,18 @@ import FormItemWrapper from "../common/FormItemWrapper";
 import CountrySpecificForm from "./CountrySpecificForm";
 
 const AddEmployeeForm = () => {
+  const defaultValues = {
+    firstName: "",
+    lastName: "",
+    countryOfWork: "",
+    dateOfBirth: "",
+    holidayAllowance: "",
+    maritalStatus: "",
+    socialInsuranceNumber: "",
+    numberOfChildren: "",
+    workingHours: "",
+  };
+
   const {
     handleSubmit,
     watch,
@@ -21,20 +33,13 @@ const AddEmployeeForm = () => {
     formState: { errors },
     control,
   } = useForm({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      countryOfWork: "",
-      dateOfBirth: "",
-      holidayAllowance: "",
-      maritalStatus: "",
-      socialInsuranceNumber: "",
-      numberOfChildren: "",
-      workingHours: "",
-    },
+    defaultValues: defaultValues,
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => {
+    console.log(data);
+    reset(defaultValues);
+  };
 
   const { Title } = Typography;
   const country = watch("countryOfWork");
@@ -53,123 +58,125 @@ const AddEmployeeForm = () => {
         </Col>
       </Row>
       <Row justify="start">
-        <FormItemWrapper>
-          <Form.Item
-            className="form-item"
-            label="First Name"
-            validateStatus={errors.firstName ? "error" : "success"}
-            help={errors.firstName ? errors.firstName.message : ""}
-          >
-            <Controller
-              name="firstName"
-              control={control}
-              render={(props) => <Input {...props.field} />}
-              rules={{
-                required: "Required",
-              }}
-            />
-          </Form.Item>
+        {/* First Name */}
+        <FormItemWrapper
+          labelCol={8}
+          wrapperCol={16}
+          label="First Name"
+          error={errors.firstName}
+        >
+          <Controller
+            name="firstName"
+            control={control}
+            render={(props) => (
+              <Input placeholder="Enter first name" {...props.field} />
+            )}
+            rules={{
+              required: "Required",
+            }}
+          />
         </FormItemWrapper>
-        <FormItemWrapper>
-          <Form.Item
-            className="form-item"
-            label="Last Name"
-            validateStatus={errors.lastName ? "error" : "success"}
-            help={errors.lastName ? errors.lastName.message : ""}
-          >
-            <Controller
-              name="lastName"
-              control={control}
-              defaultValue=""
-              render={(props) => <Input {...props.field} />}
-              rules={{
-                required: "Required",
-              }}
-            />
-          </Form.Item>
+
+        {/* Last Name */}
+        <FormItemWrapper
+          labelCol={8}
+          wrapperCol={16}
+          label="Last Name"
+          error={errors.lastName}
+        >
+          <Controller
+            name="lastName"
+            control={control}
+            defaultValue=""
+            render={(props) => (
+              <Input placeholder="Enter last name" {...props.field} />
+            )}
+            rules={{
+              required: "Required",
+            }}
+          />
         </FormItemWrapper>
-        <FormItemWrapper>
-          <Form.Item
-            className="form-item"
-            label="Country Of Work"
-            validateStatus={errors.countryOfWork ? "error" : "success"}
-            help={errors.countryOfWork ? errors.countryOfWork.message : ""}
-          >
-            <Controller
-              name="countryOfWork"
-              control={control}
-              render={(props) => (
-                <Select
-                  {...props.field}
-                  style={{ width: "200px" }}
-                  placeholder="Select a country"
-                  onChange={(country: string) => {
-                    props.field.onChange(country);
-                    reset({
-                      ...getValues(),
-                      maritalStatus: "",
-                      socialInsuranceNumber: "",
-                      numberOfChildren: "",
-                      workingHours: "",
-                    });
-                  }}
-                >
-                  <Select.Option value="spain">Spain</Select.Option>
-                  <Select.Option value="ghana">Ghana</Select.Option>
-                  <Select.Option value="brazil">Brazil</Select.Option>
-                </Select>
-              )}
-              rules={{
-                required: "Required",
-              }}
-            />
-          </Form.Item>
+
+        {/* Country Of Work */}
+        <FormItemWrapper
+          labelCol={10}
+          wrapperCol={14}
+          label="Country Of Work"
+          error={errors.countryOfWork}
+        >
+          <Controller
+            name="countryOfWork"
+            control={control}
+            render={(props) => (
+              <Select
+                {...props.field}
+                style={{ width: "200px" }}
+                placeholder="Select a country"
+                onChange={(country: string) => {
+                  props.field.onChange(country);
+                  reset({
+                    ...getValues(),
+                    maritalStatus: "",
+                    socialInsuranceNumber: "",
+                    numberOfChildren: "",
+                    workingHours: "",
+                  });
+                }}
+              >
+                <Select.Option value="spain">Spain</Select.Option>
+                <Select.Option value="ghana">Ghana</Select.Option>
+                <Select.Option value="brazil">Brazil</Select.Option>
+              </Select>
+            )}
+            rules={{
+              required: "Required",
+            }}
+          />
         </FormItemWrapper>
-        <FormItemWrapper>
-          <Form.Item
-            className="form-item"
-            label="Date Of Birth"
-            validateStatus={errors.dateOfBirth ? "error" : "success"}
-            help={errors.dateOfBirth ? errors.dateOfBirth.message : ""}
-          >
-            <Controller
-              name="dateOfBirth"
-              control={control}
-              defaultValue=""
-              render={(props) => (
-                <DatePicker
-                  placeholder="From"
-                  {...props}
-                  onChange={(date: moment.Moment | any) => {
-                    props.field.onChange(date.toDate().toUTCString());
-                  }}
-                />
-              )}
-              rules={{
-                required: "Required",
-              }}
-            />
-          </Form.Item>
+
+        {/* Date Of Birth */}
+        <FormItemWrapper
+          labelCol={10}
+          wrapperCol={14}
+          label="Date Of Birth"
+          error={errors.dateOfBirth}
+        >
+          <Controller
+            name="dateOfBirth"
+            control={control}
+            defaultValue=""
+            render={(props) => (
+              <DatePicker
+                placeholder="Select a date"
+                {...props}
+                onChange={(date: moment.Moment | any) => {
+                  props.field.onChange(date.toDate().toUTCString());
+                }}
+              />
+            )}
+            rules={{
+              required: "Required",
+            }}
+          />
         </FormItemWrapper>
-        <FormItemWrapper>
-          <Form.Item
-            className="form-item"
-            label="Holiday Allowance"
-            validateStatus={errors.holidayAllowance ? "error" : "success"}
-            help={
-              errors.holidayAllowance ? errors.holidayAllowance.message : ""
-            }
-          >
-            <Controller
-              name="holidayAllowance"
-              control={control}
-              defaultValue=""
-              render={(props) => <Input {...props.field} />}
-              rules={{
-                required: "Required",
-              }}
-            />
-          </Form.Item>
+
+        {/* Holiday Allowance */}
+        <FormItemWrapper
+          labelCol={10}
+          wrapperCol={14}
+          label="Holiday Allowance"
+          error={errors.holidayAllowance}
+        >
+          <Controller
+            name="holidayAllowance"
+            control={control}
+            render={(props) => (
+              <Input placeholder="Enter no. of days" {...props.field} />
+            )}
+            rules={{
+              required: "Required",
+            }}
+          />
         </FormItemWrapper>
       </Row>
 

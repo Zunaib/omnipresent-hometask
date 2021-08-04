@@ -1,5 +1,6 @@
-import { Form, Input } from "antd";
+import { Input } from "antd";
 import { Controller } from "react-hook-form";
+import FormItemWrapper from "../../common/FormItemWrapper";
 
 export interface NumberOfChildrenProps {
   control: any;
@@ -8,22 +9,23 @@ export interface NumberOfChildrenProps {
 
 const NumberOfChildren = ({ control, errors }: NumberOfChildrenProps) => {
   return (
-    <Form.Item
-      className="form-item"
+    <FormItemWrapper
+      labelCol={14}
+      wrapperCol={10}
       label="Number Of Children"
-      validateStatus={errors.numberOfChildren ? "error" : "success"}
-      help={errors.numberOfChildren ? errors.numberOfChildren.message : ""}
+      error={errors.numberOfChildren}
     >
       <Controller
         name="numberOfChildren"
         control={control}
-        defaultValue=""
-        render={(props) => <Input {...props.field} />}
+        render={(props) => (
+          <Input placeholder="Enter no. of children" {...props.field} />
+        )}
         rules={{
           required: "Required",
         }}
       />
-    </Form.Item>
+    </FormItemWrapper>
   );
 };
 
